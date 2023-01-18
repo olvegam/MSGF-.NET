@@ -72,8 +72,8 @@ namespace MsgFoundation.Functions
             request.WorkerId = "worker";
             request.Variables = new Dictionary<string, VariableValue>();
             
-            VariableResource vars = camunda.ProcessInstances[task.ProcessInstanceId].Variables;
-            await vars.SetBinary("Docvar", new BinaryDataContent(File.OpenRead("document.doc")), BinaryVariableType.Bytes);
+            //VariableResource vars = camunda.ProcessInstances[task.ProcessInstanceId].Variables;
+            //await vars.SetBinary("Docvar", new BinaryDataContent(File.OpenRead("document.doc")), BinaryVariableType.Bytes);
             
 
 
