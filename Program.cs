@@ -19,6 +19,8 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+app.MapGet("/", () => Console.Write("Hello World!"));
+
 app.MapGet("/dbconexion", async ([FromServices] MsgFoundationContext dbcontext) =>
 {
     dbcontext.Database.EnsureCreated();

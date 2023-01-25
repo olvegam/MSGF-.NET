@@ -73,6 +73,7 @@ namespace MsgFoundation.Functions
 
 
             Credit credit = dbcontext.Credits.Find(Guid.Parse(idCredit));
+            credit.Disbursed = disbursed;
             dbcontext.SaveChanges();
             
 
