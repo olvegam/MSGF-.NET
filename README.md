@@ -28,6 +28,8 @@ Go to the [PostgeSQL download page](https://www.enterprisedb.com/downloads/postg
 
 Install all the features. Important to include the Builder. 
 
+Please use "root" as password. 
+
 ### 2. Cloning this repository.
 
 Go to the [GitHub](https://github.com/RogerRoldan/MsgFoundation-Camunda-with-.Net-) repository and clone this repo. Remember to go to the Code button for obtaining the link for Git Clone.  
