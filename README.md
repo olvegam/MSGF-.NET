@@ -18,7 +18,7 @@ Using this repository involves:
 2. Cloning this repository. 
 3. Running the Camunda Engine. 
 4. Deploying this repo on .NET (it requires previous item)
-5. (Only once) Creating de MSG Foundation database. 
+5. (Only once) Creating the MSG Foundation database. 
 
 ## Detailed step-by-step. 
 
