@@ -52,7 +52,10 @@ timer.Elapsed += async (sender, e) => {
                await ObservationFunctions.CreateObservation(task, dbcontext, camunda);
                 break;
             case "Credit":
-                await CreditFunctions.CreateCredit(task, dbcontext,camunda);
+                await CreditFunctions.CreateCredit(task, dbcontext,camunda); 
+                break;
+            case "consult":
+                await CreditFunctions.creditConsult(task, dbcontext, camunda);
                 break;
             case "ModifyDisbursed":
                 await CreditFunctions.ModifyDisbursed(task, dbcontext, camunda);

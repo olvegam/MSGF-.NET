@@ -55,11 +55,11 @@ namespace MsgFoundation.Functions
 
             if (authorizeCredit == "rejected")
             {
-                Console.Write("Your credit has been for a value of " + valueCredit + " has been " + authorizeCredit);
+                Console.Write("Your credit for a value of " + valueCredit + " has been " + authorizeCredit);
             }
             else if (authorizeCredit == "approved")
             {
-                Console.Write("Your credit has been for a value of " + valueCredit + " has been " + authorizeCredit + legalizationInstruccions);
+                Console.Write("Your credit for a value of " + valueCredit + " has been " + authorizeCredit + " then " + legalizationInstruccions);
             }
 
         }
@@ -94,6 +94,33 @@ namespace MsgFoundation.Functions
 
             await camunda.ExternalTasks[task.Id].Complete(request);
 
+        }
+
+        //method creditConsult
+        public static async Task creditConsult(ExternalTaskInfo task, MsgFoundationContext dbcontext, CamundaClient camunda)
+        {
+            Dictionary<string, VariableValue> variables = await camunda.Executions[task.ExecutionId].LocalVariables.GetAll();
+            string idCredit = variables["idCredit"].GetValue<string>();
+
+            Credit credit = dbcontext.Credits.Find(Guid.Parse(idCredit));
+
+            FetchExternalTasks fetch = new FetchExternalTasks();
+            fetch.WorkerId = "worker";
+            fetch.MaxTasks = 1;
+            fetch.UsePriority = true;
+            fetch.Topics = new List<FetchExternalTaskTopic>();
+            fetch.Topics.Add(new FetchExternalTaskTopic(task.TopicName, 1));
+
+            List<LockedExternalTask> lockedTasks = await camunda.ExternalTasks.FetchAndLock(fetch);
+
+            CompleteExternalTask request = new CompleteExternalTask();
+            request.WorkerId = "worker";
+            request.Variables = new Dictionary<string, VariableValue>();
+            request.Variables.Add("creditId", VariableValue.FromObject(credit.Id));
+            request.Variables.Add("creditValue", VariableValue.FromObject(credit.CreditValue));
+            request.Variables.Add("userId", VariableValue.FromObject(credit.IdUser));
+           
+            await camunda.ExternalTasks[task.Id].Complete(request);
         }
 
         //method CreditCompletionReport

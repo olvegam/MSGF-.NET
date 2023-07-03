@@ -80,6 +80,9 @@ namespace MsgFoundation.Functions
             if (login != null)
             {
                 request.Variables.Add("idUser", VariableValue.FromObject(login.Id));
+                request.Variables.Add("email", VariableValue.FromObject(login.Email));
+                request.Variables.Add("Fullname", VariableValue.FromObject(login.FullName));
+                request.Variables.Add("user", VariableValue.FromObject(login.Username));
                 request.Variables.Add("login", VariableValue.FromObject(true));
                 await camunda.ExternalTasks[task.Id].Complete(request);
             }
