@@ -1,0 +1,29 @@
+{
+  "components": [
+    {
+      "label": "Valor  del crédito otorgado",
+      "type": "number",
+      "id": "Field_0fw393n",
+      "key": "creditValue",
+      "disabled": true,
+      "description": "Valor del crédito en la BD"
+    },
+    {
+      "label": "Valor del crédito otorgado -DB consulted",
+      "type": "number",
+      "id": "Field_0lpj7az",
+      "key": "creditValueGetted",
+      "description": "Valor obtenido de la consulta a la BD",
+      "disabled": true
+    }
+  ],
+  "type": "default",
+  "id": "presentCreditValue",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.7.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.19.0",
+  "schemaVersion": 6
+}
